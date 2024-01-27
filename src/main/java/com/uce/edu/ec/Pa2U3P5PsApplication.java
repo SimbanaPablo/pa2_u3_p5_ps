@@ -28,36 +28,66 @@ public class Pa2U3P5PsApplication implements CommandLineRunner {
 		// TODO Auto-generated method stub
 
 //		Factura fact = new Factura();
-//		fact.setCedula("1723344556");
+//		fact.setCedula("1723344552");
 //		fact.setFecha(LocalDateTime.now());
-//		fact.setNumero("0001-02569");
+//		fact.setNumero("0001-34512");
 //
 //		DetalleFactura det1 = new DetalleFactura();
 //		det1.setCantidad(1);
-//		det1.setCodigoBarras("6767456234");
+//		det1.setCodigoBarras("87034566745");
 //		det1.setFactura(fact);
-//		det1.setNombreProducto("Sprite");
+//		det1.setNombreProducto("Fideo");
 //		
 //		DetalleFactura det2 = new DetalleFactura();
 //		det2.setCantidad(3);
-//		det2.setCodigoBarras("9823367538");
+//		det2.setCodigoBarras("1234321267");
 //		det2.setFactura(fact);
-//		det2.setNombreProducto("Galleta");
+//		det2.setNombreProducto("Mayonesa");
+//		
+//		DetalleFactura det3 = new DetalleFactura();
+//		det3.setCantidad(1);
+//		det3.setCodigoBarras("956783412");
+//		det3.setFactura(fact);
+//		det3.setNombreProducto("Canguil");
 //		
 //		List<DetalleFactura> listaDetalle = new ArrayList<>();
 //		listaDetalle.add(det1);
 //		listaDetalle.add(det2);
+//		listaDetalle.add(det3);
 //		
 //		fact.setDetalleFactura(listaDetalle);
 //		this.facturaService.guardar(fact);
 
-		Factura factBusqueda = this.facturaService.buscarPorNumero("0001-02569");
-		System.out.println(factBusqueda);
-		for(DetalleFactura d: factBusqueda.getDetalleFactura()) {
-			System.out.println(d.getNombreProducto());
+		System.out.println("\nINNER JOIN");
+
+		List<Factura> listaFactura = this.facturaService.buscarFacturasInnerJoin();
+		for (Factura f : listaFactura) {
+			System.out.println(f);
+		}
+
+		System.out.println("\nRIGHT JOIN");
+
+		List<Factura> listaFactura2 = this.facturaService.buscarFacturasRightJoin();
+		for (Factura f : listaFactura2) {
+			System.out.println(f.getNumero());
+		}
+
+		System.out.println("\nLEFT JOIN");
+
+		List<Factura> listaFactura3 = this.facturaService.buscarFacturasLeftJoin();
+		for (Factura f : listaFactura3) {
+			System.out.println(f);
 		}
 		
-		
+		System.out.println("\nFULL JOIN");
+
+		List<Factura> listaFactura4 = this.facturaService.buscarFacturasFullJoin();
+		for (Factura f : listaFactura4) {
+			System.out.println(f);
+			for(DetalleFactura d: f.getDetalleFactura()) {
+				System.out.println(d);
+			}
+		}
 
 	}
 
