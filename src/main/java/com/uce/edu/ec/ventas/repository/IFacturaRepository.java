@@ -10,11 +10,15 @@ public interface IFacturaRepository {
 	public void insertar(Factura factura);
 
 	public List<Factura> seleccionarFacturasInnerJoin();
-	
+
 	public List<Factura> seleccionarFacturasRightJoin();
-	
+
 	public List<Factura> seleccionarFacturasLeftJoin();
-	
+
 	public List<Factura> seleccionarFacturasFullJoin();
-	
+
+	public List<Factura> seleccionarFaturasWhereJoin();
+
+	public List<Factura> seleccionarFaturasFetchJoin();
+
 }
