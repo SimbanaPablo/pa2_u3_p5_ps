@@ -14,4 +14,6 @@ public interface IHotelService {
 	public List<Hotel> buscarHotelLeftJoin(String conexionWifi);
 
 	public List<Hotel> buscarHotelFullJoin(String clase);
+
+	public List<Hotel> buscarHotelFetchJoin();
 }

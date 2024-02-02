@@ -76,4 +76,12 @@ public class HotelRepositoryImpl implements IHotelRepository {
 		return lista;
 	}
 
+	@Override
+	public List<Hotel> seleccionarHotelFetchJoin() {
+		// TODO Auto-generated method stub
+		TypedQuery<Hotel> myQ = this.entityManager.createQuery("SELECT h FROM Hotel h JOIN FETCH h.habitaciones f",
+				Hotel.class);
+		return myQ.getResultList();
+	}
+
 }

@@ -14,4 +14,6 @@ public interface IHotelRepository {
 	public List<Hotel> seleccionarHotelLeftJoin(String conexionWifi);
 
 	public List<Hotel> seleccionarHotelFullJoin(String clase);
+
+	public List<Hotel> seleccionarHotelFetchJoin();
 }
