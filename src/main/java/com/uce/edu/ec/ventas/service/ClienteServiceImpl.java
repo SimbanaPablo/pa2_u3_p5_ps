@@ -2,6 +2,7 @@ package com.uce.edu.ec.ventas.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import com.uce.edu.ec.ventas.repository.IClienteRepository;
 import com.uce.edu.ec.ventas.repository.modelo.Cliente;
@@ -20,10 +21,26 @@ public class ClienteServiceImpl implements IClienteService {
 	public void guardar(Cliente cliente) {
 		// TODO Auto-generated method stub
 		try {
-			this.clienteRepository.insertar(cliente);	
-		}catch (Exception e) {
+			this.clienteRepository.insertar(cliente);
+		} catch (Exception e) {
 			// TODO: handle exception
 		}
+	}
+
+	@Override
+	@Transactional(value = TxType.SUPPORTS)
+	public void pruebaSupports() {
+		// TODO Auto-generated method stub
+		System.out.println("Este es un metodo support");
+		System.out.println("Prueba supports " + TransactionSynchronizationManager.isActualTransactionActive());
+	}
+
+	@Override
+	@Transactional(value = TxType.NEVER)
+	public void pruebaNever() {
+		// TODO Auto-generated method stub
+		System.out.println("Este es un metodo never");
+		System.out.println("Prueba Never " + TransactionSynchronizationManager.isActualTransactionActive());
 	}
 
 }

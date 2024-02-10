@@ -32,5 +32,8 @@ public interface IFacturaRepository {
 	public void eliminar(Integer id);
 
 	public List<FacturaDTO> seleccionarFacturasDTO();
+	
+	public List<Factura> seleccionarTodo();
+	
 
 }
